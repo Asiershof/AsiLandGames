@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenida a los Juegos</title>
+    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="icon" href="img/LogoEldrow.ico" type="image/x-icon">
+    <script src="js/cambiarTema.js"></script>
+</head>
+<body>
+    <div id="derecha">
+        <button id="botonTema" class="alternar-tema" onclick="configurarTemaOscuro()">
+            <span class="icono-alternar-tema">🌞</span>
+        </button>
+    </div>
+    <div class="contenedor-bienvenida">
+        <!-- Mensaje de bienvenida -->
+        <div class="mensaje-bienvenida">
+            <h1>¡Bienvenido a AsiLand Games!</h1>
+            <p>Prueba tus habilidades en nuestros juegos</p>
+            <p>¿Serás capaz de ganar alguno?</p>
+        </div>
+
+        <!-- Contenedor de los juegos -->
+        <div class="contenedor-juegos">
+            <!-- Juego 1 -->
+            <a href="paginas/juegoEldrow.html">
+                <div class="juego" id="juegoEldrow"><img src="img/Eldrow.png" alt="Eldrow" class="imagen-juego"></div>
+            </a>
+
+            <!-- Juego 2 -->
+            <a href="paginas/juegoEkans.html">
+                <div class="juego" id="juegoEkans"><img src="img/Ekans.png" alt="Ekans" class="imagen-juego"></div>
+            </a>
+        </div>
+    </div>
+    <script src="js/script.js"></script>
+</body>
+</html>

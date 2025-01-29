@@ -1,0 +1,592 @@
+/* Variables de tema */
+:root {
+    --color-fondo: #f0f2f5;
+    --color-texto: #1a1a1a;
+    --color-tarjeta: white;
+    --color-borde: #d3d6da;
+    --color-tecla: #d3d6da;
+    --color-tecla-hover: #bbbfc3;
+    --color-caja-instruccion: #f3f3f3;
+}
+
+[data-theme="dark"] {
+    --color-fondo: #121213;
+    --color-texto: #ffffff;
+    --color-tarjeta: #2f2f31;
+    --color-borde: #3a3a3c;
+    --color-tecla: #818384;
+    --color-tecla-hover: #6e6e6e;
+    --color-caja-instruccion: #1a1a1b;
+}
+
+/* Modo daltónico */
+[data-colorblind="true"] .correcto {
+    background-color: #85c0f9;
+    border-color: #85c0f9;
+}
+
+[data-colorblind="true"] .presente {
+    background-color: #f5793a;
+    border-color: #f5793a;
+}
+
+[data-colorblind="true"] .tecla.correcto {
+    background-color: #85c0f9;
+}
+
+[data-colorblind="true"] .tecla.presente {
+    background-color: #f5793a;
+}
+
+.alternar-daltonico.active {
+    background-color: var(--color-tecla);
+    border-color: var(--color-texto);
+}
+
+.aviso-daltonico {
+    position: fixed;
+    top: 5rem;
+    right: 1rem;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.aviso-daltonico.show {
+    opacity: 1;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Botón de tema */
+.alternar-tema {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: 2px solid var(--color-borde);
+    color: var(--color-texto);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    padding: 0;
+}
+
+.alternar-tema:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Botón de modo daltónico */
+.alternar-daltonico {
+    position: fixed;
+    top: 1rem;
+    right: 5rem;
+    background: none;
+    border: 2px solid var(--color-borde);
+    color: var(--color-texto);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    padding: 0;
+}
+
+.alternar-daltonico:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Botón de instrucciones */
+.alternar-instrucciones {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    background: none;
+    border: 2px solid var(--color-borde);
+    color: var(--color-texto);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.5rem;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    padding: 0;
+}
+
+.alternar-instrucciones:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Botón volver */
+.alternar-volver {
+    position: fixed;
+    bottom: 1rem;
+    left: 1rem;
+    background: none;
+    border: 2px solid var(--color-borde);
+    color: var(--color-texto);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.5rem;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    padding: 0;
+}
+
+.alternar-volver:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.imgFlecha{
+    width: 20px;
+}
+
+/* Página de bienvenida */
+.pagina-bienvenida {
+    text-align: center;
+    max-width: 600px;
+    padding: 2rem;
+    background-color: var(--color-tarjeta);
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s;
+}
+
+/* Estilos para el logo */
+.logo-eldrow {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+/* Estilos para el encabezado de bienvenida */
+.encabezado-bienvenida {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.titulo-bienvenida {
+    color: var(--color-texto);
+    font-size: 3.5rem;
+    margin: 0;
+}
+
+.instrucciones {
+    margin-bottom: 2rem;
+    line-height: 1.6;
+    color: var(--color-texto);
+}
+
+.cuadricula-instrucciones {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+.caja-instruccion {
+    background-color: var(--color-caja-instruccion);
+    padding: 1rem;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+    display: flex;
+    align-items: center;
+}
+
+.caja-instruccion p {
+    margin: 0;
+}
+
+.boton-jugar {
+    background-color: #3eba1b;
+    color: white;
+    border: none;
+    padding: 1rem 3rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.boton-jugar:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(106, 170, 100, 0.4);
+    background-color: #5c9658;
+}
+
+.boton-jugar:active {
+    transform: translateY(0);
+}
+
+/* Contenedor del juego */
+.contenedor-juego {
+    display: none;
+}
+
+.contenedor-juego.visible {
+    display: block;
+}
+
+.contenedor-juego.celebracion {
+    position: relative;
+}
+.contenedor-juego.celebracion::after {
+    display: none;
+}
+
+.area-juego {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Estilos para el encabezado del juego */
+.encabezado-juego {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.titulo {
+    color: var(--color-texto);
+    font-size: 3.5rem;
+    margin: 0;
+}
+
+/* Cuadrícula */
+.cuadricula {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.fila {
+    display: flex;
+    gap: 5px;
+}
+
+.celda {
+    width: 50px;
+    height: 50px;
+    border: 2px solid var(--color-borde);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    background-color: var(--color-tarjeta);
+    color: var(--color-texto);
+    transition: all 0.3s ease;
+}
+
+/* Estados de las celdas */
+.correcto {
+    background-color: #3eba1b;
+    color: white;
+    border-color: #3eba1b;
+}
+
+.presente {
+    background-color: #c9b458;
+    color: white;
+    border-color: #c9b458;
+}
+
+.ausente {
+    background-color: #787c7e;
+    color: white;
+    border-color: #787c7e;
+}
+
+/* Teclado */
+.teclado {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 10px;
+}
+
+.fila-teclado {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+}
+
+.tecla {
+    min-width: 40px;
+    height: 58px;
+    border-radius: 4px;
+    border: none;
+    background-color: var(--color-tecla);
+    color: var(--color-texto);
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+}
+
+.tecla:not(.ausente):hover {
+    background-color: var(--color-tecla-hover);
+    transform: scale(1.05);
+}
+
+.tecla.presente {
+    background-color: #c9b458;
+    color: white;
+}
+
+.tecla.correcto {
+    background-color: #3eba1b;
+    color: white;
+}
+
+.tecla.ausente {
+    background-color: #787c7e;
+    color: white;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.tecla-ancha {
+    min-width: 65px;
+}
+
+/* Mensaje de alerta y botón de volver a jugar */
+.mensaje-alerta {
+    position: fixed;
+    top: 41%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    background-color: rgb(0 0 0 / 70%);
+    color: white;
+    padding: 27px 10px;
+    border-radius: 10px;
+    font-size: 1.5rem;
+    text-align: center;
+    min-width: 360px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.mensaje-alerta.mostrar {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.boton-volver-jugar {
+    background-color: #3eba1b;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+    display: block;
+    width: 100%;
+    max-width: 250px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.boton-volver-jugar:hover {
+    background-color: #5c9658;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.boton-volver-jugar:focus {
+    outline: 2px solid #3eba1b;
+    outline-offset: 2px;
+}
+
+/* Estilos para la ventana modal de instrucciones */
+.modal {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background-color: var(--color-tarjeta);
+    margin: 10% auto;
+    padding: 30px;
+    border: 1px solid var(--color-borde);
+    border-radius: 15px;
+    width: 90%;
+    max-width: 600px;
+    color: var(--color-texto);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.cerrar {
+    color: var(--color-texto);
+    float: right;
+    font-size: 32px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+.cerrar:hover,
+.cerrar:focus {
+    color: #888;
+    text-decoration: none;
+}
+
+.modal h2 {
+    color: var(--color-texto);
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    text-align: center;
+    margin-top: 38px;
+}
+
+.modal p {
+    line-height: 1.6;
+    text-align: center;
+}
+
+.modal .cuadricula-instrucciones {
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+.modal .caja-instruccion {
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.info-extra-intrucciones {
+    font-style: italic;
+    text-align: center;
+}
+
+/* Estilos para los fuegos artificiales */
+.fuegos-artificiales-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    /* Coloca los fuegos artificiales detrás del contenido */
+}
+
+#fuegos-artificiales-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.fuego {
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    transform: scale(0);
+}
+
+.fuego::before,
+.fuego::after {
+    content: "";
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    opacity: 0;
+}
+
+@keyframes fuego-animacion {
+    0% {
+        transform: scale(0) translate(-50%, 0);
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1) translate(-50%, -1000%);
+        opacity: 0;
+    }
+}
+
+@keyframes explosion {
+    0% {
+        width: 0%;
+        height: 0%;
+        opacity: 0.5;
+    }
+
+    100% {
+        width: 300%;
+        height: 300%;
+        opacity: 0;
+    }
+}
